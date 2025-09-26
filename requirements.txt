@@ -1,0 +1,2 @@
+# No external dependencies required for basic functionality
+# This program uses only Python standard library modules
