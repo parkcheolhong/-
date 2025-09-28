@@ -32,7 +32,7 @@ class TaskScheduler:
             with open(self.data_file, 'w', encoding='utf-8') as f:
                 json.dump(self.tasks, f, ensure_ascii=False, indent=2)
         except IOError as e:
-            print(f"Failed to save tasks: {e}")
+            print(f"작업을 저장하는 데 실패했습니다: {e}")
     
     def parse_korean_request(self, text: str) -> Dict:
         """Parse Korean scheduling requests"""
