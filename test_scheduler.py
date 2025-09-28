@@ -31,8 +31,8 @@ def test_korean_parsing():
 def test_task_scheduling():
     """Test task scheduling functionality"""
     # Use temporary file for testing
-    with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.json') as tmp:
-        tmp_file = tmp.name
+    fd, tmp_file = tempfile.mkstemp(suffix='.json')
+    os.close(fd)
     
     try:
         scheduler = TaskScheduler(tmp_file)
