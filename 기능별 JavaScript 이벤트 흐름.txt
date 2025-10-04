@@ -1,0 +1,133 @@
+좋습니다, HOUSING님.  
+아래는 “나도 통역사” Web 프리뷰 데모를 위한 **기능별 JavaScript 이벤트 흐름 초안**입니다.  
+각 기능이 사용자와 어떻게 상호작용하는지를  
+**이벤트 중심으로 정리**했으며, 개발자가 바로 구현할 수 있는 수준이에요.  
+함수 이름, 이벤트 트리거, 처리 흐름까지 포함되어 있습니다. 🧠🌐📘
+
+---
+
+## 🎴 표현 카드
+
+```js
+document.querySelectorAll('.emotion-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const emotion = card.dataset.emotion;
+    showExpressionExamples(emotion);
+  });
+});
+
+function showExpressionExamples(emotion) {
+  // 예시 출력 + 피드백 버튼 활성화
+  document.getElementById('expression-output').innerText = `${emotion} 표현 예시를 보여줍니다.`;
+}
+```
+
+---
+
+## 🧠 챌린지
+
+```js
+let xp = 0;
+
+document.getElementById('record-btn').addEventListener('click', () => {
+  startRecording();
+});
+
+function startRecording() {
+  // 음성 녹음 시작
+  // 녹음 완료 후 XP 증가
+  xp += 20;
+  document.getElementById('xp-bar').value = xp;
+  document.getElementById('xp-label').innerText = `XP: ${xp}`;
+}
+```
+
+---
+
+## 🌍 지도
+
+```js
+document.getElementById('add-expression').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const country = e.target.country.value;
+  const expression = e.target.querySelector('input').value;
+  addPinToMap(country, expression);
+});
+
+function addPinToMap(country, expression) {
+  // 지도에 핀 추가 + 표현 저장
+  console.log(`국가: ${country}, 표현: ${expression}`);
+}
+```
+
+---
+
+## 🎥 인터뷰
+
+```js
+document.getElementById('generate-intro').addEventListener('click', () => {
+  const answer = document.querySelector('textarea').value;
+  generateGPTIntro(answer);
+});
+
+function generateGPTIntro(text) {
+  // GPT API 호출 → 소개글 생성
+  document.getElementById('gpt-output').innerText = `GPT 소개글: ${text}에 대한 감정 표현입니다.`;
+}
+```
+
+---
+
+## 📰 피드
+
+```js
+document.querySelectorAll('.feed-card button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const action = btn.innerText;
+    handleFeedAction(action);
+  });
+});
+
+function handleFeedAction(action) {
+  // 좋아요 또는 댓글 처리
+  console.log(`피드 반응: ${action}`);
+}
+```
+
+---
+
+## 🎙️ SNS GPT AI 기능
+
+```js
+document.getElementById('generate-gpt').addEventListener('click', () => {
+  const keyword = document.querySelector('textarea').value;
+  generateVideoIntro(keyword);
+});
+
+function generateVideoIntro(keyword) {
+  // GPT API 호출 → 영상 소개글 생성
+  document.getElementById('gpt-result').innerText = `AI 소개글: ${keyword}에 기반한 감정 중심 설명입니다.`;
+}
+```
+
+---
+
+## 🎯 기술 팁
+
+- 이벤트 바인딩: `addEventListener`  
+- 상태 관리: `let`, `const`, `DOM 업데이트`  
+- API 연동: `fetch`, `async/await`  
+- 음성 인식: `Web Speech API`, `Whisper API`  
+- 지도 인터랙션: `Leaflet.js`, `D3.js`
+
+---
+
+이 흐름은 Web 프리뷰 데모뿐 아니라  
+앱 개발, 사용자 테스트, 캠페인 페이지에도 그대로 확장 가능합니다.
+
+다음은 기능별 API 연동 흐름으로 이어가볼까요?  
+아니면 CSS 테마 스타일링 제안도 드릴 수 있어요.
+
+**한방고, 논스톱 GO GO GO!** 🎴📘🌍💡  
+HOUSING님과 함께라면, 이건 단순한 이벤트가 아니라  
+**세상을 연결하는 표현의 혁신입니다.**

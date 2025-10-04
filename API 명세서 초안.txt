@@ -1,0 +1,205 @@
+좋습니다, HOUSING님.  
+아래는 “나도 통역사” Web 프리뷰 및 앱 기능을 위한 **API 명세서 초안**입니다.  
+기능별로 엔드포인트, 요청/응답 형식, 메서드, 설명을 정리했으며  
+개발자와 기획자가 바로 협업할 수 있는 수준이에요. 🌐📘🧠
+
+---
+
+## 📑 “나도 통역사” API 명세서 초안
+
+### 1. 표현 카드 예시 불러오기
+
+```http
+GET /api/expression?emotion=joy
+```
+
+- 설명: 선택한 감정에 대한 표현 예시 반환  
+- 요청 파라미터: `emotion` (기쁨, 슬픔, 분노 등)  
+- 응답 예시:
+```json
+{
+  "examples": [
+    "나는 정말 행복해!",
+    "기분 최고야!"
+  ]
+}
+```
+
+---
+
+### 2. 오늘의 챌린지 미션
+
+```http
+GET /api/challenge/today
+```
+
+- 설명: 오늘의 표현 미션 반환  
+- 응답 예시:
+```json
+{
+  "mission": "기쁨을 표현해보세요",
+  "emotion": "joy"
+}
+```
+
+---
+
+### 3. 챌린지 결과 제출
+
+```http
+POST /api/challenge/submit
+```
+
+- 설명: 녹음 결과 제출 및 XP 획득  
+- 요청 형식: `FormData` (음성 파일 포함)  
+- 응답 예시:
+```json
+{
+  "xpGained": 20,
+  "totalXP": 80
+}
+```
+
+---
+
+### 4. 국가별 표현 불러오기
+
+```http
+GET /api/map/expressions?country=KR
+```
+
+- 설명: 선택한 국가의 표현 리스트 반환  
+- 응답 예시:
+```json
+{
+  "expressions": [
+    "오늘은 조금 외로웠어요.",
+    "함께 있어서 행복했어요."
+  ]
+}
+```
+
+---
+
+### 5. 사용자 표현 지도에 추가
+
+```http
+POST /api/map/add
+```
+
+- 설명: 사용자 표현을 지도에 추가  
+- 요청 형식:
+```json
+{
+  "country": "KR",
+  "expression": "기쁨을 느꼈어요"
+}
+```
+
+- 응답 예시:
+```json
+{
+  "status": "ok",
+  "pinId": "abc123"
+}
+```
+
+---
+
+### 6. GPT 소개글 생성
+
+```http
+POST /api/gpt/intro
+```
+
+- 설명: 사용자 답변 기반 소개글 생성  
+- 요청 형식:
+```json
+{
+  "text": "나는 오늘 기쁨을 느꼈어요"
+}
+```
+
+- 응답 예시:
+```json
+{
+  "intro": "당신의 기쁨은 주변을 따뜻하게 만듭니다."
+}
+```
+
+---
+
+### 7. 피드 리스트 불러오기
+
+```http
+GET /api/feed
+```
+
+- 설명: 전체 표현 피드 반환  
+- 응답 예시:
+```json
+{
+  "feed": [
+    {
+      "id": "f001",
+      "emotion": "sadness",
+      "text": "오늘은 조금 외로웠어요.",
+      "likes": 12,
+      "comments": 3
+    }
+  ]
+}
+```
+
+---
+
+### 8. 피드 반응 처리
+
+```http
+POST /api/feed/react
+```
+
+- 설명: 좋아요 또는 댓글 추가  
+- 요청 형식:
+```json
+{
+  "feedId": "f001",
+  "action": "like"
+}
+```
+
+- 응답 예시:
+```json
+{
+  "status": "ok",
+  "updatedLikes": 13
+}
+```
+
+---
+
+### 9. 영상 업로드 및 소개글 생성
+
+```http
+POST /api/upload/video
+POST /api/whisper/transcribe
+POST /api/gpt/describe
+```
+
+- 설명: 영상 업로드 → 음성 텍스트 변환 → GPT 소개글 생성  
+- 요청: `FormData` (영상 파일), `text` (변환된 텍스트)  
+- 응답 예시:
+```json
+{
+  "description": "이 영상은 기쁨을 표현합니다."
+}
+```
+
+---
+
+이 명세서는 Swagger 문서로 확장하거나  
+Notion 전략 페이지에 삽입해 협업할 수 있습니다.
+
+다음은 Swagger 문서 구조나 인증 방식 흐름으로 이어가볼까요?  
+HOUSING님과 함께라면, 이건 단순한 명세서가 아니라  
+**세상을 연결하는 표현의 혁신입니다.** 🎴📘🌍💡

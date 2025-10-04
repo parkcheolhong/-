@@ -1,0 +1,32 @@
+좋습니다, HOUSING님.  
+아래는 GitHub 저장소 구조에 따라 **시안 분류별 디렉토리 이름과 적용 파일 예시**를 정리한 표입니다.  
+이대로 구성하면 개발자와 콘텐츠 팀이 바로 실행에 들어갈 수 있습니다. 💻📘📦
+
+---
+
+## 📁 GitHub 저장소 구조: 시안 분류별 디렉토리 및 파일 예시
+
+| 디렉토리 | 시안 분류 | 적용 파일 예시 |
+|-----------|-----------------------------|-----------------------------|
+| `frontend/` | 앱 UI / Web 프리뷰 / 피드 / 인터뷰 화면 | `EmotionCard.jsx`, `InterviewView.jsx`, `FeedPage.jsx`, `ReportModal.jsx`, `ChallengeView.jsx` |
+| `backend/` | 사용자 DB / 표현 저장 / XP 시스템 / 인증 | `userModel.js`, `expressionAPI.js`, `xpTracker.js`, `authController.js`, `badgeSystem.js` |
+| `ai/` | GPT 질문 생성 / 음성 인식 / 소개글 자동 생성 | `generatePrompt.js`, `voiceToText.js`, `autoSummary.js`, `thumbnailPreview.js`, `errorHandler.js` |
+| `assets/` | 카드 이미지 / 영상 샘플 / 인터뷰 인용 / 캠페인 키트 | `emotion_cards/`, `interview_clips/`, `campaign_quotes.json`, `badges/`, `templates/` |
+| `docs/` | 실행 흐름 / 콘텐츠 맵 / README / 제안서 / 일정표 | `README.md`, `execution_plan.pdf`, `content_map.pptx`, `proposal_edu.pdf`, `timeline.xlsx` |
+
+---
+
+## 🧩 활용 팁
+
+- 각 디렉토리는 **기능별로 독립적**이면서도 **연동 가능**하게 구성  
+- `docs/README.md`는 전체 흐름과 구조를 설명하는 **설계서 역할**  
+- `assets/`는 콘텐츠 팀이 직접 관리하며 디자인 시안과 캠페인 키트를 포함  
+- `ai/`는 GPT API와 음성 인식 기능을 연동하는 핵심 로직
+
+---
+
+필요하시면 각 파일의 **기능 설명 주석**,  
+또는 `README.md`에 들어갈 **기능별 설명 블록**도 정리해드릴 수 있어요.
+
+**지금은 실현을 넘어 구현의 시간입니다.  
+한방고, 논스톱 GO GO GO!** 🎴📘🌍💻💡

@@ -1,0 +1,81 @@
+좋습니다, HOUSING님.  
+이제 “나도 통역사” Web 프리뷰 데모를 실제로 업로드하는 흐름을  
+**GitHub Pages 기반으로 단계별 정리**해드릴게요.  
+아래는 개발자와 디자이너가 바로 실행할 수 있는  
+**소스 구조 + 업로드 절차 + 배포 링크 생성**까지 포함된 실행 가이드입니다. 🌐📘🎬
+
+---
+
+## 🚀 Web 프리뷰 데모 실제 업로드 흐름
+
+### 1️⃣ GitHub 저장소 생성
+
+- GitHub 접속 → 새 저장소 생성  
+- 저장소 이름: `nadotong-preview`  
+- 공개(Public) 설정  
+- README.md 자동 생성 체크
+
+---
+
+### 2️⃣ 소스 파일 구성
+
+```
+nadotong-preview/
+├── index.html
+├── style.css
+├── script.js
+├── assets/
+│   ├── images/
+│   └── icons/
+├── components/
+│   ├── emotionCards.html
+│   ├── challenge.html
+│   ├── map.html
+│   ├── interview.html
+│   └── feed.html
+```
+
+> 각 기능별 HTML 파일은 `components/` 폴더에 분리  
+> `index.html`에서 `iframe` 또는 `section`으로 연결
+
+---
+
+### 3️⃣ GitHub Pages 설정
+
+- 저장소 → Settings → Pages  
+- Source: `main` branch → `/root` 선택  
+- 저장 후 자동 배포
+
+---
+
+### 4️⃣ 배포 링크 확인
+
+- 배포 완료 후 링크 생성됨  
+- 예시: `https://housing.github.io/nadotong-preview/`  
+- Notion 전략 페이지, 제안서, 캠페인 키트에 삽입 가능
+
+---
+
+### 5️⃣ 테스트 및 수정
+
+- 각 기능별 UI/UX 확인  
+- 모바일/PC 반응형 체크  
+- 오류 발생 시 `console.log`로 디버깅  
+- 필요 시 GitHub에 커밋 → 자동 업데이트
+
+---
+
+## 🎯 활용 팁
+
+- Web 프리뷰는 사용자 테스트, IR 발표, 캠페인 데모에 활용 가능  
+- GitHub 저장소에 PDF/PPT, 이미지, 제안서도 함께 업로드 가능  
+- Notion 전략 페이지에 링크 삽입 → 외부 공유 최적화
+
+---
+
+다음은 각 기능별 HTML 템플릿 초안으로 이어가볼까요?  
+아니면 Web 프리뷰에 삽입할 인터랙션 예시도 정리해드릴 수 있어요.
+
+**한방고, 논스톱 GO GO GO!** 🎴📘🌍💡  
+HOUSING님과 함께라면, 이건 단순한 업로드가 아니라  
+**세상을 연결하는 표현의 혁신입니다.**

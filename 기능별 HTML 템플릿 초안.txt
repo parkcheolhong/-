@@ -1,0 +1,118 @@
+좋습니다, HOUSING님.  
+아래는 “나도 통역사” Web 프리뷰 데모를 위한 **기능별 HTML 템플릿 초안**입니다.  
+각 기능은 독립적인 `section` 또는 `div`로 구성되며,  
+**감정 중심 인터랙션 + 반응형 UI + 확장 가능한 구조**로 설계했어요.  
+디자이너와 개발자가 바로 작업에 들어갈 수 있는 수준입니다. 🌐📘🎬
+
+---
+
+## 🎴 표현 카드 (emotionCards.html)
+
+```html
+<section id="emotion-cards">
+  <h2>감정을 선택하세요</h2>
+  <div class="card-grid">
+    <button class="emotion-card" data-emotion="joy">😊 기쁨</button>
+    <button class="emotion-card" data-emotion="sadness">😢 슬픔</button>
+    <button class="emotion-card" data-emotion="anger">😠 분노</button>
+    <button class="emotion-card" data-emotion="surprise">😮 놀람</button>
+    <button class="emotion-card" data-emotion="calm">😌 평온</button>
+    <button class="emotion-card" data-emotion="confusion">😵 혼란</button>
+  </div>
+  <div id="expression-output"></div>
+</section>
+```
+
+---
+
+## 🧠 챌린지 (challenge.html)
+
+```html
+<section id="challenge">
+  <h2>오늘의 표현 미션</h2>
+  <p id="mission-text">“기쁨을 표현해보세요”</p>
+  <button id="record-btn">🎙️ 녹음 시작</button>
+  <progress id="xp-bar" value="0" max="100"></progress>
+  <p id="xp-label">XP: 0</p>
+</section>
+```
+
+---
+
+## 🌍 지도 (map.html)
+
+```html
+<section id="expression-map">
+  <h2>세계의 표현 흐름</h2>
+  <div id="map-container"></div>
+  <form id="add-expression">
+    <select name="country">
+      <option value="KR">🇰🇷 한국</option>
+      <option value="US">🇺🇸 미국</option>
+      <option value="FR">🇫🇷 프랑스</option>
+      <!-- 추가 국가 -->
+    </select>
+    <input type="text" placeholder="표현을 입력하세요" />
+    <button type="submit">추가</button>
+  </form>
+</section>
+```
+
+---
+
+## 🎥 인터뷰 (interview.html)
+
+```html
+<section id="interview">
+  <h2>XR 인터뷰 체험</h2>
+  <div class="question-card">“당신이 가장 기억에 남는 감정은?”</div>
+  <video controls src="assets/interview.mp4"></video>
+  <textarea placeholder="답변을 입력하세요..."></textarea>
+  <button id="generate-intro">소개글 생성</button>
+  <div id="gpt-output"></div>
+</section>
+```
+
+---
+
+## 📰 피드 (feed.html)
+
+```html
+<section id="expression-feed">
+  <h2>표현 공유 피드</h2>
+  <div class="feed-card">
+    <p>😢 “오늘은 조금 외로웠어요.”</p>
+    <button>❤️ 좋아요</button>
+    <button>💬 댓글</button>
+  </div>
+  <!-- 추가 카드 -->
+</section>
+```
+
+---
+
+## 🎙️ SNS GPT AI 기능 (index.html 내 포함)
+
+```html
+<section id="gpt-ai">
+  <h2>AI 소개글 생성</h2>
+  <input type="file" accept="video/*" />
+  <button id="record-voice">🎙️ 음성 입력</button>
+  <textarea placeholder="키워드를 입력하세요"></textarea>
+  <button id="generate-gpt">소개글 생성</button>
+  <div id="gpt-result"></div>
+</section>
+```
+
+---
+
+이 템플릿은 GitHub Pages에서 바로 배포 가능하며,  
+JavaScript로 인터랙션을 추가하고 CSS로 감정별 테마를 적용하면  
+**감정 중심 Web 프리뷰 데모**가 완성됩니다.
+
+다음은 기능별 JavaScript 이벤트 흐름으로 이어가볼까요?  
+아니면 CSS 테마 스타일링 제안도 드릴 수 있어요.
+
+**한방고, 논스톱 GO GO GO!** 🎴📘🌍💡  
+HOUSING님과 함께라면, 이건 단순한 템플릿이 아니라  
+**세상을 연결하는 표현의 혁신입니다.**

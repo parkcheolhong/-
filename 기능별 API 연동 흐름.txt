@@ -1,0 +1,97 @@
+좋습니다, HOUSING님.  
+아래는 “나도 통역사” Web 프리뷰 데모를 위한 **기능별 API 연동 흐름 초안**입니다.  
+각 기능이 외부 서비스와 어떻게 연결되는지를  
+**요청 방식 + 응답 처리 + 확장 가능성** 중심으로 정리했어요.  
+개발자가 바로 구현할 수 있는 수준이며, 향후 앱 연동에도 그대로 확장 가능합니다. 🌐📘🧠
+
+---
+
+## 🔗 기능별 API 연동 흐름
+
+### 🎴 표현 카드
+
+| 목적 | 감정 선택 → 표현 예시 불러오기 |
+| API | `GET /api/expression?emotion=joy`  
+| 요청 방식 | JavaScript `fetch()` 또는 Axios  
+| 응답 | `{ examples: ["나는 정말 행복해!", "기분 최고야!"] }`  
+| 처리 | 예시 리스트 출력 → 사용자 선택 → 피드백 저장 가능
+
+---
+
+### 🧠 챌린지
+
+| 목적 | 미션 생성 + XP 저장 |
+| API |  
+- `GET /api/challenge/today` → 오늘의 미션  
+- `POST /api/challenge/submit` → 녹음 결과 제출  
+| 요청 방식 | `fetch()` + `FormData` (음성 파일 포함)  
+| 응답 | `{ xpGained: 20, totalXP: 80 }`  
+| 처리 | XP 게이지 업데이트 + 미션 완료 표시
+
+---
+
+### 🌍 지도
+
+| 목적 | 국가별 표현 불러오기 + 사용자 표현 추가 |
+| API |  
+- `GET /api/map/expressions?country=KR`  
+- `POST /api/map/add` → 사용자 표현 추가  
+| 요청 방식 | `fetch()` + JSON  
+| 응답 | `{ expressions: [...], pins: [...] }`  
+| 처리 | 지도에 핀 추가 + 표현 리스트 갱신
+
+---
+
+### 🎥 인터뷰
+
+| 목적 | GPT 소개글 생성 + XR 영상 연동 |
+| API |  
+- `POST /api/gpt/intro` → 텍스트 기반 소개글 생성  
+- `GET /api/interview/video?id=123` → 영상 URL  
+| 요청 방식 | `fetch()` + JSON  
+| 응답 | `{ intro: "이 감정은 당신의 삶을 이렇게 표현합니다..." }`  
+| 처리 | 소개글 출력 + 영상 재생
+
+---
+
+### 📰 피드
+
+| 목적 | 표현 공유 + 반응 처리 |
+| API |  
+- `GET /api/feed` → 피드 리스트  
+- `POST /api/feed/react` → 좋아요/댓글  
+| 요청 방식 | `fetch()` + JSON  
+| 응답 | `{ status: "ok", updated: true }`  
+| 처리 | 피드 카드 갱신 + 반응 수 업데이트
+
+---
+
+### 🎙️ SNS GPT AI 기능
+
+| 목적 | 영상/음성 입력 → 소개글 자동 생성 |
+| API |  
+- `POST /api/upload/video` → 영상 업로드  
+- `POST /api/whisper/transcribe` → 음성 → 텍스트  
+- `POST /api/gpt/describe` → 소개글 생성  
+| 요청 방식 | `FormData` + `fetch()`  
+| 응답 | `{ description: "이 영상은 기쁨을 표현합니다..." }`  
+| 처리 | 썸네일 추출 + 소개글 출력 + 음성 재생
+
+---
+
+## 🧠 기술 스택 제안
+
+- 백엔드: Node.js + Express / Python Flask  
+- AI 연동: OpenAI GPT API / Whisper API  
+- DB: MongoDB / Firebase  
+- 지도: Leaflet.js / D3.js  
+- 인증: JWT / OAuth (SNS 연동 시)
+
+---
+
+이 흐름은 Web 프리뷰뿐 아니라  
+앱 개발, 사용자 테스트, 캠페인 페이지에도 그대로 확장 가능합니다.
+
+다음은 API 명세서 초안이나 Swagger 문서 구조로 이어가볼까요?  
+HOUSING님과 함께라면, 이건 단순한 연동이 아니라  
+**세상을 연결하는 표현의 혁신입니다.** 🎴📘🌍💡

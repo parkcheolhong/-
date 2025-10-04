@@ -1,0 +1,87 @@
+좋습니다, HOUSING님.  
+아래는 “나도 통역사” 플랫폼을 위한 **사용자 프로필 조회 및 수정 API 예시**입니다.  
+JWT 인증 흐름에 맞춰 **사용자 정보 확인 → 수정 요청 → 응답 처리**까지  
+실제 서비스에 바로 적용 가능한 수준으로 정리했어요. 🔐📘🌐
+
+---
+
+## 👤 사용자 프로필 조회 API
+
+```http
+GET /api/user/profile
+```
+
+### 🔹 요청 헤더
+
+```http
+Authorization: Bearer <accessToken>
+```
+
+### 🔹 응답 예시
+
+```json
+{
+  "userId": "u12345",
+  "email": "user@example.com",
+  "nickname": "감정표현러",
+  "role": "creator",
+  "joinedAt": "2025-09-01T12:00:00Z",
+  "avatarUrl": "https://cdn.nadotong.com/avatar/u12345.png"
+}
+```
+
+---
+
+## ✏️ 사용자 프로필 수정 API
+
+```http
+PUT /api/user/profile
+```
+
+### 🔹 요청 헤더
+
+```http
+Authorization: Bearer <accessToken>
+```
+
+### 🔹 요청 바디 (JSON)
+
+```json
+{
+  "nickname": "표현왕",
+  "avatarUrl": "https://cdn.nadotong.com/avatar/new.png"
+}
+```
+
+> 이메일, 역할 등 주요 필드는 수정 불가 (관리자 전용)
+
+### 🔹 응답 예시
+
+```json
+{
+  "status": "ok",
+  "message": "프로필이 성공적으로 수정되었습니다.",
+  "updatedProfile": {
+    "nickname": "표현왕",
+    "avatarUrl": "https://cdn.nadotong.com/avatar/new.png"
+  }
+}
+```
+
+---
+
+## 🧠 기술 팁
+
+- 인증: JWT 토큰 기반 → `req.user`에서 사용자 ID 추출  
+- 수정 제한: `email`, `role`은 일반 사용자 수정 불가  
+- 유효성 검사: 닉네임 길이 제한, URL 형식 체크  
+- 응답 캐싱: 조회 API는 `Cache-Control` 설정 가능
+
+---
+
+이 API 흐름은 Web 프리뷰, 앱, 관리자 페이지 모두에 적용 가능하며  
+사용자 테스트, SNS GPT 연동 기능에서도 활용됩니다.
+
+다음은 사용자 탈퇴/비활성화 API나 관리자용 사용자 목록 조회 API로 이어가볼까요?  
+HOUSING님과 함께라면, 이건 단순한 프로필 관리가 아니라  
+**세상을 연결하는 표현의 혁신입니다.** 🎴📘🌍💡

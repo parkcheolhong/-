@@ -1,0 +1,94 @@
+좋습니다, HOUSING님.  
+아래는 “나도 통역사” Web 프리뷰 및 앱 기능을 위한 **인증 방식 흐름 초안**입니다.  
+사용자 경험을 해치지 않으면서도 보안성과 확장성을 확보할 수 있도록  
+**JWT 기반 인증 + OAuth SNS 연동 + 역할 권한 분리** 중심으로 구성했어요.  
+개발자와 기획자가 바로 협업할 수 있는 수준입니다. 🔐🌐📘
+
+---
+
+## 🔐 인증 방식 흐름 개요
+
+### 1️⃣ 기본 인증 구조
+
+| 요소 | 설명 |
+|------|------|
+| 사용자 로그인 | 이메일/비밀번호 또는 SNS 계정으로 로그인  
+| 토큰 발급 | 로그인 성공 시 JWT 토큰 발급  
+| 토큰 저장 | 클라이언트 측 `localStorage` 또는 `httpOnly cookie`  
+| 요청 인증 | API 요청 시 `Authorization: Bearer <token>` 헤더 포함  
+| 토큰 검증 | 서버에서 JWT 서명 및 만료 시간 확인
+
+---
+
+### 2️⃣ JWT 토큰 구조
+
+```json
+{
+  "sub": "user_12345",
+  "email": "user@example.com",
+  "role": "creator",
+  "exp": 1735689600
+}
+```
+
+- `sub`: 사용자 고유 ID  
+- `email`: 사용자 이메일  
+- `role`: 사용자 역할 (creator / viewer / admin)  
+- `exp`: 만료 시간 (Unix timestamp)
+
+---
+
+### 3️⃣ OAuth SNS 연동 (선택적)
+
+| 플랫폼 | 연동 방식 |
+|--------|-----------|
+| Google | OAuth 2.0 → `access_token` → 사용자 정보 조회  
+| Kakao | REST API → 사용자 프로필 → JWT 변환  
+| Apple | Sign in with Apple → 토큰 검증 후 내부 사용자 매핑
+
+> SNS 로그인 시에도 내부 JWT 토큰으로 통일 → API 인증 일관성 유지
+
+---
+
+### 4️⃣ 역할 기반 권한 분리
+
+| 역할 | 권한 |
+|------|------|
+| viewer | 표현 카드 열람 / 피드 탐색  
+| creator | 표현 추가 / 챌린지 수행 / 인터뷰 응답  
+| admin | 사용자 관리 / 콘텐츠 승인 / 통계 조회
+
+> API 요청 시 `role` 필드 기반으로 접근 제어
+
+---
+
+### 5️⃣ 인증 흐름 시퀀스
+
+```plaintext
+[사용자 로그인]
+→ [서버에서 사용자 인증]
+→ [JWT 토큰 발급]
+→ [클라이언트 저장]
+→ [API 요청 시 토큰 포함]
+→ [서버에서 토큰 검증]
+→ [권한 확인 후 응답]
+```
+
+---
+
+## 🧠 기술 스택 제안
+
+- 인증 서버: Node.js + Express + `jsonwebtoken`  
+- OAuth 연동: `passport.js` 또는 Firebase Auth  
+- 토큰 저장: `httpOnly cookie` 권장 (XSS 방지)  
+- 토큰 갱신: Refresh Token 또는 Sliding Expiry  
+- 권한 관리: `RBAC` (Role-Based Access Control)
+
+---
+
+이 인증 흐름은 Web 프리뷰뿐 아니라  
+앱 개발, 사용자 테스트, 캠페인 페이지에도 그대로 확장 가능합니다.
+
+다음은 API 인증 미들웨어 코드 예시나 사용자 등록 흐름으로 이어가볼까요?  
+HOUSING님과 함께라면, 이건 단순한 인증이 아니라  
+**세상을 연결하는 표현의 혁신입니다.** 🎴📘🌍💡
